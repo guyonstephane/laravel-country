@@ -19,9 +19,7 @@ You can use this as a starting point to create your own Bootstrap 5 based Larave
     <img src="https://www.kreaweb.be/wp-content/uploads/2024/03/laravel-11-bootstrap-5-005b.webp"/>
 </p>
 
-## Documentation
 
-<a href="https://www.kreaweb.be/laravel-11-bootstrap-5/" target="_blank">https://www.kreaweb.be/laravel-11-bootstrap-5/</a>
 
 ## License
 
