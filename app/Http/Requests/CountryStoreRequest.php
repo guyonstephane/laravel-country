@@ -28,7 +28,7 @@ class CountryStoreRequest extends FormRequest
             'esperanceVie'=> 'required',
             'PNB'=> 'required',
             'chefEtat'=> 'required',
-            'capitale'=> 'required'
+            'capitale'=> 'required',
             
         ];
     }

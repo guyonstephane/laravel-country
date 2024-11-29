@@ -105,14 +105,14 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputCreate" class="form-label"><strong>Population:</strong></label>
+            <label for="inputCreate" class="form-label"></label>
             <input
                 type="hidden" 
                 class="form-control @error('population') is-invalid @enderror" 
                 name="create_at"
                 value="NULL" 
-                id="inputCreate" 
-            >
+                id="inputCreate" >
+            
             @error('population')
                 <div class="form-text text-danger">{{ $message }}</div>
             @enderror

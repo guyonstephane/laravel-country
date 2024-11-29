@@ -17,10 +17,10 @@ class CountryController extends Controller
      */
     public function index(): View
     {
-        $countries = Country::latest()->paginate(10);
+        $countries = Country::paginate(10);
           
-        return view('countries.index', compact('countries'))
-                    ->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('countries.index', compact('countries'));
+                    
     }
     
     /**
@@ -76,7 +76,7 @@ class CountryController extends Controller
     {
         $country->delete();
            
-        return redirect()->route('products.index')
+        return redirect()->route('countries.index')
                         ->with('success','country deleted successfully');
     }
 }
