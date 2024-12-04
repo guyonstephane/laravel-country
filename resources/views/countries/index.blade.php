@@ -37,12 +37,15 @@
 
                             <a class="btn btn-info btn-sm" href="{{ route('countries.show',$country->id) }}"><i class="fa-solid fa-list"></i> Show</a>
 
+                        @if ($role == 'Admin')
                             <a class="btn btn-primary btn-sm" href="{{ route('countries.edit',$country->id) }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
 
                             @csrf
                             @method('DELETE')
 
+                            
                             <button type="submit" class="btn btn-danger btn-sm btn-delete"><i class="fa-solid fa-trash"></i> Delete</button>
+                        @endif
                         </form>
                     </td>
                 </tr>

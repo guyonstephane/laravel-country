@@ -9,7 +9,10 @@ use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Http\Requests\CountryStoreRequest;
 use App\Http\Requests\CountryUpdateRequest;
-    
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
+
+
 class CountryController extends Controller
 {
     /**
@@ -18,8 +21,14 @@ class CountryController extends Controller
     public function index(): View
     {
         $countries = Country::paginate(10);
+        $role = "visiteur";
+        if (Auth::check()){
+            if(Auth::user()->hasRole('Admin'))
+                $role = "Admin";
+        }
+        
           
-        return view('countries.index', compact('countries'));
+        return view('countries.index', compact('countries','role'));
                     
     }
     
