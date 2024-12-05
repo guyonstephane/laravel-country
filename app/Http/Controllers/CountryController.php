@@ -11,6 +11,7 @@ use App\Http\Requests\CountryStoreRequest;
 use App\Http\Requests\CountryUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\DB;
 
 
 class CountryController extends Controller
@@ -18,14 +19,27 @@ class CountryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $countries = Country::paginate(10);
+        
+        if ($request->has('name')){
+            $continent = $request->name ;
+            echo " $continent";
+
+            $countries =DB::table('countries')
+                    ->where('continent',"$continent")
+                    ->paginate(5);
+      
+        }
+        else {        
+            $countries = Country::paginate(10);
+        }
         $role = "visiteur";
         if (Auth::check()){
             if(Auth::user()->hasRole('Admin'))
                 $role = "Admin";
         }
+
         
           
         return view('countries.index', compact('countries','role'));
@@ -56,7 +70,8 @@ class CountryController extends Controller
      */
     public function show(Country $country): View
     {
-        return view('countries.show',compact('country'));
+    
+       return view('countries.show',compact('country'));
     }
   
     /**
@@ -88,4 +103,6 @@ class CountryController extends Controller
         return redirect()->route('countries.index')
                         ->with('success','country deleted successfully');
     }
+
+
 }

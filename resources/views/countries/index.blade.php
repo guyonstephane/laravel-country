@@ -21,6 +21,7 @@
                     <th>Code</th>
                     <th>Nom</th>
                     <th>Population</th>
+                    <th>Continent</th>
                     <th width="250px">Action</th>
                 </tr>
             </thead>
@@ -32,6 +33,8 @@
                     <td>{{ $country->code }}</td>
                     <td>{{ $country->nom }}</td>
                     <td>{{ $country->population }}</td>
+                    <td>{{ $country->continent }}</td>
+                    
                     <td>
                         <form action="{{ route('countries.destroy',$country->id) }}" method="POST">
 
@@ -70,7 +73,7 @@
         var form = $(this).parents("form");
 
         Swal.fire({
-          title: "êtes vous sûr de vouloir supprimer le pays : {{$country->nom}} ?",
+          title: "êtes vous sûr de vouloir supprimer le pays  ?",
           text: "cette opération est irréversible",
           icon: "warning",
           showCancelButton: true,
